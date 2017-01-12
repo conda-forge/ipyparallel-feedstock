@@ -1,4 +1,4 @@
-{% set version = "5.2.0" %}
+{% set version = "6.0.0" %}
 
 package:
   name: ipyparallel
@@ -7,10 +7,10 @@ package:
 source:
   fn: ipyparallel-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/i/ipyparallel/ipyparallel-{{ version }}.tar.gz
-  sha256: d99e760f1a136b1c402755a4ab51a8d7cb87c892cccadf641948a5e886c8a455
+  sha256: 9bb5032e98a8c73ddb3da5fb8eecd93c676a5278b68799ab19257b348a0a27f6
 
 build:
-  number: 1
+  number: 0
   script:
     - pip install --no-deps .
     - jupyter nbextension install --sys-prefix --py ipyparallel
@@ -19,8 +19,9 @@ requirements:
   build:
     - python
     - pip
-    - futures               # [py<32]
+    - futures  # [py<32]
     - decorator
+    - python-dateutil
     - tornado >=4
     - pyzmq >=13
     - ipython_genutils
@@ -37,8 +38,9 @@ requirements:
 
   run:
     - python
-    - futures               # [py<32]
+    - futures  # [py<32]
     - decorator
+    - python-dateutil
     - tornado >=4
     - pyzmq >=13
     - ipython_genutils
