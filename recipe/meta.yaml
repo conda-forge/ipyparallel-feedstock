@@ -1,6 +1,6 @@
 {% set version = "6.1.1" %}
 {% set sha256 = 'f1e03ebb8d17f67f03bafa5d85f220883462f7bd7a97fe904c7d56ffba8534a3' %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 package:
   name: ipyparallel
@@ -13,29 +13,11 @@ source:
 
 build:
   number: {{ build }}
-  script:
-    - pip install --no-deps .
-    - jupyter nbextension install --sys-prefix --py ipyparallel
 
 requirements:
   build:
     - python
     - pip
-    - futures               # [py2k]
-    - decorator
-    - tornado >=4
-    - python-dateutil >=2.1
-    - pyzmq >=13
-    - ipython_genutils
-    - ipython >=4
-    - jupyter_client
-    - ipykernel
-    # To install the notebook extension.
-    #
-    # We don't require this to install/use
-    # ipyparallel though. So we don't make
-    # it a run-time requirement.
-    - notebook
 
   run:
     - python
@@ -50,6 +32,8 @@ requirements:
     - ipykernel
 
 test:
+  requires:
+    - notebook >=5.3
   imports:
     - ipyparallel
     - ipyparallel.apps
@@ -57,6 +41,10 @@ test:
     - ipyparallel.controller
     - ipyparallel.engine
     - ipyparallel.serialize
+  commands:
+    - ipcluster -h
+    - ipengine -h
+    - ipcontroller -h
 
 about:
   home: http://ipython.org
