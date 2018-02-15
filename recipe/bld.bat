@@ -7,3 +7,4 @@ if not exist "%TREE_CONFIG%" mkdir "%TREE_CONFIG%"
 copy "%RECIPE_DIR%\serverextension.json" "%SERVER_CONFIG%\ipyparallel.json"
 copy "%RECIPE_DIR%\nbextension.json" "%TREE_CONFIG%\ipyparallel.json"
 pip install --no-deps .
+jupyter nbextension install --sys-prefix --py ipyparallel

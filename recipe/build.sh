@@ -9,3 +9,4 @@ mkdir -p "$SERVER_CONFIG"
 mkdir -p "$TREE_CONFIG"
 cp "$RECIPE_DIR/serverextension.json" "$SERVER_CONFIG/ipyparallel.json"
 cp "$RECIPE_DIR/nbextension.json" "$TREE_CONFIG/ipyparallel.json"
+jupyter nbextension install --sys-prefix --py ipyparallel

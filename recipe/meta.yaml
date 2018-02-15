@@ -18,6 +18,7 @@ requirements:
   build:
     - python
     - pip
+    - notebook
 
   run:
     - python
