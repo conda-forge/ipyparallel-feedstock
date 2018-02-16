@@ -1,6 +1,6 @@
 {% set version = "6.1.1" %}
 {% set sha256 = 'f1e03ebb8d17f67f03bafa5d85f220883462f7bd7a97fe904c7d56ffba8534a3' %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 package:
   name: ipyparallel
@@ -13,9 +13,11 @@ source:
 
 build:
   number: {{ build }}
-  script:
-    - pip install --no-deps .
-    - jupyter nbextension install --sys-prefix --py ipyparallel
+  entry_points:
+    - ipcluster = ipyparallel.apps.ipclusterapp:launch_new_instance
+    - ipcontroller = ipyparallel.apps.ipcontrollerapp:launch_new_instance
+    - ipengine = ipyparallel.apps.ipengineapp:launch_new_instance
+
 
 requirements:
   build:
@@ -50,6 +52,8 @@ requirements:
     - ipykernel
 
 test:
+  requires:
+    - notebook >=5.3
   imports:
     - ipyparallel
     - ipyparallel.apps
@@ -57,6 +61,10 @@ test:
     - ipyparallel.controller
     - ipyparallel.engine
     - ipyparallel.serialize
+  commands:
+    - ipcluster -h
+    - ipengine -h
+    - ipcontroller -h
 
 about:
   home: http://ipython.org
