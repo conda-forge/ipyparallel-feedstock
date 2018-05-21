@@ -14,14 +14,16 @@ Summary: Interactive Parallel Computing with IPython
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/ipyparallel-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/ipyparallel-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/ipyparallel-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/ipyparallel-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/ipyparallel-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/ipyparallel-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/ipyparallel-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/ipyparallel-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/ipyparallel-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/ipyparallel-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/ipyparallel-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/ipyparallel-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/ipyparallel/badges/version.svg)](https://anaconda.org/conda-forge/ipyparallel)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/ipyparallel/badges/downloads.svg)](https://anaconda.org/conda-forge/ipyparallel)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-ipyparallel-green.svg)](https://anaconda.org/conda-forge/ipyparallel) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ipyparallel.svg)](https://anaconda.org/conda-forge/ipyparallel) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ipyparallel.svg)](https://anaconda.org/conda-forge/ipyparallel) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ipyparallel.svg)](https://anaconda.org/conda-forge/ipyparallel) |
 
 Installing ipyparallel
 ======================
