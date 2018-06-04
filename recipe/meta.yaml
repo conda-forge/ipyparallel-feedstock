@@ -1,6 +1,5 @@
-{% set version = "6.1.1" %}
-{% set sha256 = 'f1e03ebb8d17f67f03bafa5d85f220883462f7bd7a97fe904c7d56ffba8534a3' %}
-{% set build = 1 %}
+{% set version = "6.2.0" %}
+{% set sha256 = "ef9afbf566c5a9fc746b70c17a3161e8786fc9bebce1e807c80c4e5e112ec1cb" %}
 
 package:
   name: ipyparallel
@@ -12,32 +11,18 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: {{ build }}
+  number: 0
   entry_points:
     - ipcluster = ipyparallel.apps.ipclusterapp:launch_new_instance
     - ipcontroller = ipyparallel.apps.ipcontrollerapp:launch_new_instance
     - ipengine = ipyparallel.apps.ipengineapp:launch_new_instance
+  script: pip install --no-deps .
 
 
 requirements:
   build:
     - python
     - pip
-    - futures               # [py2k]
-    - decorator
-    - tornado >=4
-    - python-dateutil >=2.1
-    - pyzmq >=13
-    - ipython_genutils
-    - ipython >=4
-    - jupyter_client
-    - ipykernel
-    # To install the notebook extension.
-    #
-    # We don't require this to install/use
-    # ipyparallel though. So we don't make
-    # it a run-time requirement.
-    - notebook
 
   run:
     - python
