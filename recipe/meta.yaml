@@ -1,5 +1,5 @@
-{% set version = "6.2.2" %}
-{% set sha256 = "02b225966d5c20f12b1fba0b6b10aa5d352a6b492e075f137ff0ff6e95b9358e" %}
+{% set version = "6.2.3" %}
+{% set sha256 = "1e3bd58434c5d31f852ffd1af907a6485b5857966c770eac02fb0111720027cd" %}
 
 package:
   name: ipyparallel
@@ -34,7 +34,7 @@ requirements:
     - ipython_genutils
     - ipython >=4
     - jupyter_client
-    - ipykernel
+    - ipykernel >=4.4
 
 test:
   requires:
