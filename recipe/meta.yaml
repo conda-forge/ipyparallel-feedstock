@@ -55,6 +55,7 @@ about:
   home: http://ipython.org
   license: BSD 3-Clause
   license_family: BSD
+  license_file: COPYING.md
   summary: Interactive Parallel Computing with IPython
 
 extra:
