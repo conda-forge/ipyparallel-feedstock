@@ -1,5 +1,5 @@
-{% set version = "6.2.4" %}
-{% set sha256 = "76c7b028962b0ba762e4e45b450ee3a4353e7221526a8af812e817d7ef6ac065" %}
+{% set version = "6.2.5" %}
+{% set sha256 = "33416179665f9c2f567011ab1a618232bc32c0845c0a3a5c388f6c71048bc053" %}
 
 package:
   name: ipyparallel
@@ -53,7 +53,7 @@ test:
 
 about:
   home: http://ipython.org
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_file: COPYING.md
   license_family: BSD
   summary: Interactive Parallel Computing with IPython
