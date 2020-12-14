@@ -16,10 +16,13 @@ build:
     - ipcluster = ipyparallel.apps.ipclusterapp:launch_new_instance
     - ipcontroller = ipyparallel.apps.ipcontrollerapp:launch_new_instance
     - ipengine = ipyparallel.apps.ipengineapp:launch_new_instance
-  script: pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install .
 
 
 requirements:
+  build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
     - python
     - pip
