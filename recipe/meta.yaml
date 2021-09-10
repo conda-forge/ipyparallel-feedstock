@@ -1,5 +1,5 @@
-{% set version = "6.3.0" %}
-{% set sha256 = "0a97b276c62db633e9e97a816282bdd166f9df74e28204f0c8fa54b71944cfdc" %}
+{% set version = "7.0.0" %}
+{% set sha256 = "7524e80a40a50e24f2529d17edf002039b71ab620f82fdc6ee0b492bf1338544" %}
 
 package:
   name: ipyparallel
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 3
+  number: 0
   noarch: python
   entry_points:
     - ipcluster = ipyparallel.apps.ipclusterapp:launch_new_instance
@@ -21,7 +21,7 @@ build:
 
 
 requirements:
-  build:
+  host:
     - python  >=3.5
     - pip
 
