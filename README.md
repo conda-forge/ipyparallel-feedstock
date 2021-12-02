@@ -1,13 +1,17 @@
 About ipyparallel
 =================
 
-Home: https://ipython.org
+Home: https://github.com/ipython/ipyparallel
 
 Package license: BSD-3-Clause
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ipyparallel-feedstock/blob/master/LICENSE.txt)
 
 Summary: Interactive Parallel Computing with IPython
+
+Development: https://github.com/ipython/ipyparallel
+
+Documentation: https://ipyparallel.readthedocs.io
 
 Current build status
 ====================
@@ -116,6 +120,7 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@bollwyvl](https://github.com/bollwyvl/)
 * [@jakirkham](https://github.com/jakirkham/)
 * [@minrk](https://github.com/minrk/)
 
