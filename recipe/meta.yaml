@@ -27,11 +27,13 @@ build:
     - {{ PYTHON }} -m pip install -vv --no-deps .
 
 requirements:
+  build:
+    - nodejs ==14.*
+
   host:
     - python >=3.6
     - pip
     - jupyterlab ==3.*
-    - nodejs ==14.*
 
   run:
     - python >=3.6
