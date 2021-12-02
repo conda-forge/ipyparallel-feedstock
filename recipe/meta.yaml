@@ -1,27 +1,36 @@
 {% set version = "8.0.0" %}
-{% set sha256 = "95305a886f2c42e9603c034ea684e5c031d9d4222c66ed6d85eb3ae15d631e4b" %}
 
 package:
   name: ipyparallel
   version: {{ version }}
 
 source:
-  fn: ipyparallel-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/i/ipyparallel/ipyparallel-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 95305a886f2c42e9603c034ea684e5c031d9d4222c66ed6d85eb3ae15d631e4b
 
 build:
-  number: 0
+  number: 1
   noarch: python
+  ignore_run_exports:
+    - nodejs *
+  script_env:
+    # don't re-run the nodejs build inside pip install
+    - IPP_DISABLE_JS=1
   entry_points:
     - ipcluster = ipyparallel.cluster.app:main
     - ipcontroller = ipyparallel.controller.app:main
     - ipengine = ipyparallel.engine.app:main
-  script: {{ PYTHON }} -m pip install -vv --no-deps .
-
+  script:
+    - jlpm --ignore-scripts --ignore-optional
+    - jlpm clean:all
+    - jlpm build:prod
+    - {{ PYTHON }} -m pip install -vv --no-deps .
 
 requirements:
   build:
+    - nodejs *
+
+  host:
     - python >=3.6
     - pip
     - jupyterlab ==3.*
@@ -42,7 +51,10 @@ requirements:
 
 test:
   requires:
+    - jupyterlab ==3.*
     - notebook >=5.3
+    - pip
+    - m2-grep  # [win]
   imports:
     - ipyparallel
     - ipyparallel.apps
@@ -54,15 +66,32 @@ test:
     - ipcluster -h
     - ipengine -h
     - ipcontroller -h
+    - pip check
+    # list
+    - jupyter labextension list
+    - jupyter server extension list
+    - jupyter serverextension list
+    # validate
+    - jupyter labextension list 1>labextensions 2>&1
+    - jupyter server extension list 1>server_extensions 2>&1
+    - jupyter serverextension list 1>serverextensions 2>&1
+    - grep -ie "ipyparallel-labextension.*v{{ version.replace(".", "\\.") }}.*OK" labextensions
+    - grep -ie "ipyparallel.*{{ version.replace(".", "\\.") }}.*OK" server_extensions
+    - grep -ie "ipyparallel.*{{ version.replace(".", "\\.") }}.*OK" serverextensions
 
 about:
-  home: https://ipython.org
+  home: https://github.com/ipython/ipyparallel
   license: BSD-3-Clause
-  license_file: COPYING.md
+  license_file:
+    - COPYING.md
+    - ipyparallel/labextension/static/third-party-licenses.json
   license_family: BSD
   summary: Interactive Parallel Computing with IPython
+  doc_url: https://ipyparallel.readthedocs.io
+  dev_url: https://github.com/ipython/ipyparallel
 
 extra:
   recipe-maintainers:
     - jakirkham
     - minrk
+    - bollwyvl
