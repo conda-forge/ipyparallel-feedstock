@@ -28,7 +28,7 @@ build:
 
 requirements:
   build:
-    - nodejs ==14.*
+    - nodejs *
 
   host:
     - python >=3.6
