@@ -1,4 +1,4 @@
-{% set version = "8.0.0" %}
+{% set version = "8.1.0" %}
 
 package:
   name: ipyparallel
@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/ipyparallel/ipyparallel-{{ version }}.tar.gz
-  sha256: 95305a886f2c42e9603c034ea684e5c031d9d4222c66ed6d85eb3ae15d631e4b
+  sha256: 63f7e136e88f890e9802522fa5475dd81e7614ba06a8cfe4f80cc3056fdb7d73
 
 build:
-  number: 1
+  number: 0
   noarch: python
   ignore_run_exports:
     - nodejs *
