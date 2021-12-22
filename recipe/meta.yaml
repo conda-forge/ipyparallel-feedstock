@@ -11,11 +11,6 @@ source:
 build:
   number: 0
   noarch: python
-  ignore_run_exports:
-    - nodejs *
-  script_env:
-    # don't re-run the nodejs build inside pip install
-    - IPP_DISABLE_JS=1
   entry_points:
     - ipcluster = ipyparallel.cluster.app:main
     - ipcontroller = ipyparallel.controller.app:main
@@ -28,7 +23,6 @@ requirements:
     - python >=3.6
     - pip
     - jupyterlab ==3.*
-
   run:
     - python >=3.6
     - decorator
