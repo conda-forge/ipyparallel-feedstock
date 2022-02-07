@@ -1,4 +1,4 @@
-{% set version = "8.1.0" %}
+{% set version = "8.2.0" %}
 
 package:
   name: ipyparallel
@@ -6,13 +6,13 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/ipyparallel/ipyparallel-{{ version }}.tar.gz
-  sha256: 63f7e136e88f890e9802522fa5475dd81e7614ba06a8cfe4f80cc3056fdb7d73
+  sha256: 0fd9f64a5120980a89b64299806c12bb8df8ceea155e5200b705301eb2401e19
 
 build:
   number: 0
   noarch: python
   script_env:
-   - IPP_DISABLE_JS=1
+    - IPP_DISABLE_JS=1
   entry_points:
     - ipcluster = ipyparallel.cluster.app:main
     - ipcontroller = ipyparallel.controller.app:main
