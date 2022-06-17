@@ -1,4 +1,4 @@
-{% set version = "8.3.0" %}
+{% set version = "8.4.0" %}
 
 package:
   name: ipyparallel
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/ipyparallel/ipyparallel-{{ version }}.tar.gz
-  sha256: 275d6d0c89c812679f0addc6a399bd75384bdf199ade12922d2ab3e2f7a99dc1
+  sha256: 25e636f2b596d16931e16a49d8b9dfa37fbd3eb7e98a6a5ce889ef4e324021ff
 
 build:
   number: 0
@@ -24,7 +24,7 @@ requirements:
   host:
     - python >=3.6
     - pip
-    - flit-core >=3.2,<4
+    - hatchling >=0.25
     - jupyterlab ==3.*
   run:
     - python >=3.6
