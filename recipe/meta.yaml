@@ -24,7 +24,7 @@ requirements:
   host:
     - python >=3.6
     - pip
-    - flit-core >=3.2,<4
+    - hatchling >=0.25
     - jupyterlab ==3.*
   run:
     - python >=3.6
