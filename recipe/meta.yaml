@@ -1,4 +1,4 @@
-{% set version = "8.6.1" %}
+{% set version = "8.7.0" %}
 
 package:
   name: ipyparallel
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/ipyparallel/ipyparallel-{{ version }}.tar.gz
-  sha256: a39aa5ef9560170bf0e9afedca9ff045e1b9c1832c49303377edcc91cea9fb77
+  sha256: 403c0971ae56c2b6a39ffe8f35f31c7fd170ce127924629459cdd7f7a0b4e7c3
 
 build:
   number: 0
