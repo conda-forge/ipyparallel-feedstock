@@ -1,4 +1,5 @@
 {% set version = "8.7.0" %}
+{% set min_python = "python >=3.8" %}
 
 package:
   name: ipyparallel
@@ -11,8 +12,6 @@ source:
 build:
   number: 0
   noarch: python
-  script_env:
-    - IPP_DISABLE_JS=1
   entry_points:
     - ipcluster = ipyparallel.cluster.app:main
     - ipcontroller = ipyparallel.controller.app:main
@@ -22,11 +21,11 @@ build:
 
 requirements:
   host:
-    - python >=3.8
-    - pip
+    - {{ min_python }}
     - hatchling >=0.25
-    - jupyterlab ==4.*
+    - pip
   run:
+    - {{ min_python }}
     - decorator
     - entrypoints
     - ipykernel >=4.4
@@ -43,6 +42,7 @@ requirements:
 test:
   requires:
     - jupyterlab ==4.*
+    - nbclassic
     - m2-grep  # [win]
     - pip
   imports:
@@ -60,14 +60,15 @@ test:
     # list
     - jupyter labextension list
     - jupyter server extension list
-    - jupyter serverextension list
-    # validate
+    - jupyter nbclassic extension list
+    # write
     - jupyter labextension list 1>labextensions 2>&1
     - jupyter server extension list 1>server_extensions 2>&1
-    - jupyter serverextension list 1>serverextensions 2>&1
-    - grep -ie "ipyparallel-labextension.*v{{ version.replace(".", "\\.") }}.*OK" labextensions
-    - grep -ie "ipyparallel.*{{ version.replace(".", "\\.") }}.*OK" server_extensions
-    - grep -ie "ipyparallel.*{{ version.replace(".", "\\.") }}.*OK" serverextensions
+    - jupyter nbclassic extension list 1>nbclassic_extensions 2>&1
+    # validate
+    - grep -iE "ipyparallel-labextension.*v{{ version.replace(".", "\\.") }}.*OK" labextensions
+    - grep -iE "ipyparallel.*{{ version.replace(".", "\\.") }}.*OK" server_extensions
+    - grep -iE "ipyparallel.*{{ version.replace(".", "\\.") }}.*OK" nbclassic_extensions
 
 about:
   home: https://github.com/ipython/ipyparallel
