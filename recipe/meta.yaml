@@ -18,34 +18,32 @@ build:
     - ipcontroller = ipyparallel.controller.app:main
     - ipengine = ipyparallel.engine.app:main
   script:
-    - {{ PYTHON }} -m pip install -vv --no-deps .
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
-    - python >=3.6
+    - python >=3.8
     - pip
     - hatchling >=0.25
-    - jupyterlab ==3.*
+    - jupyterlab ==4.*
   run:
-    - python >=3.6
     - decorator
-    - tornado >=5.1
+    - entrypoints
+    - ipykernel >=4.4
+    - ipython >=4
+    - jupyter_client
+    - psutil
     - python-dateutil >=2.1
     - pyzmq >=18
-    - ipython >=6
-    - jupyter_client
-    - ipykernel >=4.4
-    - traitlets >=4.3
-    - psutil
+    - tornado >=5.1
     - tqdm
-    - entrypoints
+    - traitlets >=4.3
 
 test:
   requires:
-    - jupyterlab ==3.*
-    - notebook >=5.3
-    - pip
+    - jupyterlab ==4.*
     - m2-grep  # [win]
+    - pip
   imports:
     - ipyparallel
     - ipyparallel.apps
@@ -54,10 +52,10 @@ test:
     - ipyparallel.engine
     - ipyparallel.serialize
   commands:
+    - pip check
     - ipcluster -h
     - ipengine -h
     - ipcontroller -h
-    - pip check
     # list
     - jupyter labextension list
     - jupyter server extension list
