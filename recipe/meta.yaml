@@ -1,5 +1,6 @@
 {% set min_python = "python >=3.8" %}
-{% set version = "8.8.0" %}
+{% set min_python = "python >=3.8" %}
+{% set version = "9.0.0" %}
 {% set min_python = "python >=3.8" %}
 
 package:
@@ -8,7 +9,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/ipyparallel/ipyparallel-{{ version }}.tar.gz
-  sha256: 2404d59f86a3aaa3bd27bf6b57df777bff5c1363c1c6e60403759d16ed42dc7b
+  sha256: 70601cbaf9a169d350ffe22c82d5bbdfe6dfe4c4df02836d9990e9c559b5bcb6
 
 build:
   number: 0
