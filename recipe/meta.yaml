@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.orgs/packages/source/i/ipyparallel/ipyparallel-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/i/ipyparallel/ipyparallel-{{ version }}.tar.gz
   sha256: 70601cbaf9a169d350ffe22c82d5bbdfe6dfe4c4df02836d9990e9c559b5bcb6
 
 build:
