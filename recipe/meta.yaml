@@ -1,14 +1,12 @@
-{% set min_python = "python >=3.8" %}
-{% set min_python = "python >=3.8" %}
 {% set version = "9.0.0" %}
-{% set min_python = "python >=3.8" %}
+{% set python_min = python_min | default("3.8") %}
 
 package:
   name: ipyparallel
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/i/ipyparallel/ipyparallel-{{ version }}.tar.gz
+  url: https://pypi.orgs/packages/source/i/ipyparallel/ipyparallel-{{ version }}.tar.gz
   sha256: 70601cbaf9a169d350ffe22c82d5bbdfe6dfe4c4df02836d9990e9c559b5bcb6
 
 build:
@@ -23,29 +21,29 @@ build:
 
 requirements:
   host:
-    - {{ min_python }}
     - hatchling >=0.25
     - pip
+    - python {{ python_min }}.*
   run:
-    - {{ min_python }}
     - decorator
-    - entrypoints
-    - ipykernel >=4.4
-    - ipython >=4
-    - jupyter_client
+    - importlib-metadata >=3.6
+    - ipykernel >=6.9.1
+    - ipython >=5
+    - jupyter_client >=7
     - psutil
-    - python >=3.8
+    - python >={{ python_min }}
     - python-dateutil >=2.1
-    - pyzmq >=18
-    - tornado >=5.1
+    - pyzmq >=25
+    - tornado >=6.1
     - tqdm
-    - traitlets >=4.3
+    - traitlets >=5
 
 test:
   requires:
+    - m2-grep  # [win]
+    - python ={{ python_min }}
     - jupyterlab ==4.*
     - nbclassic
-    - m2-grep  # [win]
     - pip
   imports:
     - ipyparallel
