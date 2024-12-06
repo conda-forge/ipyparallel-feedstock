@@ -10,7 +10,7 @@ source:
   sha256: 70601cbaf9a169d350ffe22c82d5bbdfe6dfe4c4df02836d9990e9c559b5bcb6
 
 build:
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - ipcluster = ipyparallel.cluster.app:main
