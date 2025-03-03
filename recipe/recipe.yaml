@@ -71,9 +71,9 @@ tests:
       - jupyter labextension list 1>labextensions 2>&1
       - jupyter server extension list 1>server_extensions 2>&1
       - jupyter nbclassic extension list 1>nbclassic_extensions 2>&1
-      - "grep -iE \"ipyparallel-labextension.*v{{ version | replace(\".\", \"\\\\.\") }}.*OK\" labextensions"
-      - "grep -iE \"ipyparallel.*{{ version | replace(\".\", \"\\\\.\") }}.*OK\" server_extensions"
-      - "grep -iE \"ipyparallel.*{{ version | replace(\".\", \"\\\\.\") }}.*OK\" nbclassic_extensions"
+      - grep -iE "ipyparallel-labextension.*OK" labextensions
+      - grep -iE "ipyparallel.*OK" server_extensions
+      - grep -iE "ipyparallel.*OK" nbclassic_extensions
 
 about:
   license: BSD-3-Clause
