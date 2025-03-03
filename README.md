@@ -11,7 +11,7 @@ Summary: Interactive Parallel Computing with IPython
 
 Development: https://github.com/ipython/ipyparallel
 
-Documentation: https://ipyparallel.readthedocs.io
+Documentation: https://ipyparallel.readthedocs.io/
 
 Current build status
 ====================
