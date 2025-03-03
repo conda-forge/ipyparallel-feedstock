@@ -1,0 +1,92 @@
+schema_version: 1
+
+context:
+  version: 9.0.0
+  python_min: "\"python_min | default(\"3.9\")\""
+
+package:
+  name: ipyparallel
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/i/ipyparallel/ipyparallel-${{ version }}.tar.gz
+  sha256: 70601cbaf9a169d350ffe22c82d5bbdfe6dfe4c4df02836d9990e9c559b5bcb6
+
+build:
+  number: 2
+  noarch: python
+  script:
+    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  python:
+    entry_points:
+      - ipcluster = ipyparallel.cluster.app:main
+      - ipcontroller = ipyparallel.controller.app:main
+      - ipengine = ipyparallel.engine.app:main
+
+requirements:
+  host:
+    - hatchling >=0.25
+    - pip
+    - python ${{ python_min }}.*
+  run:
+    - decorator
+    - importlib-metadata >=3.6
+    - ipykernel >=6.9.1
+    - ipython >=5
+    - jupyter_client >=7
+    - psutil
+    - python >=${{ python_min }}
+    - python-dateutil >=2.1
+    - pyzmq >=25
+    - tornado >=6.1
+    - tqdm
+    - traitlets >=5
+
+tests:
+  - python:
+      imports:
+        - ipyparallel
+        - ipyparallel.apps
+        - ipyparallel.client
+        - ipyparallel.controller
+        - ipyparallel.engine
+        - ipyparallel.serialize
+      python_version: ${{ python_min }}.*
+  - requirements:
+      run:
+        - if: win
+          then: m2-grep
+        - python ${{ python_min }}.*
+        - jupyterlab ==4.*
+        - nbclassic
+        - pip
+    script:
+      - pip check
+      - ipcluster -h
+      - ipengine -h
+      - ipcontroller -h
+      - jupyter labextension list
+      - jupyter server extension list
+      - jupyter nbclassic extension list
+      - jupyter labextension list 1>labextensions 2>&1
+      - jupyter server extension list 1>server_extensions 2>&1
+      - jupyter nbclassic extension list 1>nbclassic_extensions 2>&1
+      - "grep -iE \"ipyparallel-labextension.*v{{ version | replace(\".\", \"\\\\.\") }}.*OK\" labextensions"
+      - "grep -iE \"ipyparallel.*{{ version | replace(\".\", \"\\\\.\") }}.*OK\" server_extensions"
+      - "grep -iE \"ipyparallel.*{{ version | replace(\".\", \"\\\\.\") }}.*OK\" nbclassic_extensions"
+
+about:
+  license: BSD-3-Clause
+  license_file:
+    - COPYING.md
+    - ipyparallel/labextension/static/third-party-licenses.json
+  summary: Interactive Parallel Computing with IPython
+  homepage: https://github.com/ipython/ipyparallel
+  repository: https://github.com/ipython/ipyparallel
+  documentation: https://ipyparallel.readthedocs.io
+
+extra:
+  recipe-maintainers:
+    - jakirkham
+    - minrk
+    - bollwyvl
