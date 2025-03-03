@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   version: 9.0.0
-  python_min: "\"python_min | default(\"3.9\")\""
+  python_min: ${{ python_min | default("3.9") }}
 
 package:
   name: ipyparallel
