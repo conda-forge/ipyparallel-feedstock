@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: 9.0.1
+  version: "9.0.2"
   python_min: ${{ python_min | default("3.9") }}
 
 package:
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/i/ipyparallel/ipyparallel-${{ version }}.tar.gz
-  sha256: 2e592cad2200c5a94fbbff639bff36e6ec9122f34b36b2fc6b4d678d9e98f29c
+  sha256: d992edd698a99d45f2d9059af1c9ae8f086d1aeedb3e80436029a2f28d069f83
 
 build:
   number: 0
