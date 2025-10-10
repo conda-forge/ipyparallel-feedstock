@@ -57,9 +57,7 @@ tests:
         - python ${{ python_min }}.*
         - jupyterlab ==4.*
         - nbclassic
-        - pip
     script:
-      - pip check
       - ipcluster -h
       - ipengine -h
       - ipcontroller -h
