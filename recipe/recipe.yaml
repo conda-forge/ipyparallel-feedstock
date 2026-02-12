@@ -12,7 +12,7 @@ source:
   sha256: d992edd698a99d45f2d9059af1c9ae8f086d1aeedb3e80436029a2f28d069f83
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script:
     - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
@@ -55,7 +55,7 @@ tests:
   - requirements:
       run:
         - python ${{ python_min }}.*
-        - jupyterlab ==4.*
+        - jupyterlab 4.*
         - nbclassic
     script:
       - ipcluster -h
