@@ -1,7 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/prefix-dev/recipe-format/main/schema.json
 schema_version: 1
 
 context:
-  version: "9.0.2"
+  version: "9.1.0"
+  python_check_max: "3.14"
 
 package:
   name: ipyparallel
@@ -9,10 +11,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/i/ipyparallel/ipyparallel-${{ version }}.tar.gz
-  sha256: d992edd698a99d45f2d9059af1c9ae8f086d1aeedb3e80436029a2f28d069f83
+  sha256: ecc81a1bfd2681eb571e361839d5defcbeec583ae3ee0503bc83b066106b88cd
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script:
     - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
@@ -51,7 +53,7 @@ tests:
         - ipyparallel.serialize
       python_version:
         - ${{ python_min }}.*
-        - 3.14.*
+        - ${{ python_check_max }}.*
   - requirements:
       run:
         - python ${{ python_min }}.*
