@@ -2,8 +2,10 @@
 schema_version: 1
 
 context:
-  version: "9.1.0"
+  version: "9.2.0"
   python_check_max: "3.14"
+  jupyterlab_min: "4.5.7"
+  jupyterlab_max: "5"
 
 package:
   name: ipyparallel
@@ -11,7 +13,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/i/ipyparallel/ipyparallel-${{ version }}.tar.gz
-  sha256: ecc81a1bfd2681eb571e361839d5defcbeec583ae3ee0503bc83b066106b88cd
+  sha256: 2b31bb4e94708e7ffb4ee6501d7f5f664df7e1c4c572e91e9e0d12484c6a6910
 
 build:
   number: 0
@@ -41,6 +43,8 @@ requirements:
     - tornado >=6.1
     - tqdm
     - traitlets >=5
+  run_constraints:
+    - jupyterlab >=${{ jupyterlab_min }},<${{ jupyterlab_max }}
 
 tests:
   - python:
@@ -57,7 +61,7 @@ tests:
   - requirements:
       run:
         - python ${{ python_min }}.*
-        - jupyterlab 4.*
+        - jupyterlab ${{ jupyterlab_min }}.*
         - nbclassic
     script:
       - ipcluster -h
