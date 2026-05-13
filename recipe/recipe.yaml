@@ -4,6 +4,8 @@ schema_version: 1
 context:
   version: "9.2.0"
   python_check_max: "3.14"
+  jupyterlab_min: "4.5.7"
+  jupyterlab_max: "5"
 
 package:
   name: ipyparallel
@@ -41,6 +43,8 @@ requirements:
     - tornado >=6.1
     - tqdm
     - traitlets >=5
+  run_constraints:
+    - jupyterlab >=${{ jupyterlab_min }},<${{ jupyterlab_max }}
 
 tests:
   - python:
@@ -57,7 +61,7 @@ tests:
   - requirements:
       run:
         - python ${{ python_min }}.*
-        - jupyterlab 4.*
+        - jupyterlab ${{ jupyterlab_min }}.*
         - nbclassic
     script:
       - ipcluster -h
